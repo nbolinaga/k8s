@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: nextjs-service
+spec:
+  selector:
+    app: nextjs-deployment
+  ports:
+    - name: admin
+      port: 3000
+      targetPort: 3000
+
+    - name: client
+      port: 3002
+      targetPort: 3002
+  type: LoadBalancer

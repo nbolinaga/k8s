@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nextjs-deployment
+  labels:
+    app: nextjs-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nextjs-deployment
+  template:
+    metadata:
+      labels:
+        app: nextjs-deployment
+    spec:
+      containers:
+      - name: admin-nextjs-deploy
+        image: registry.digitalocean.com/k8s-demo/admin:latest
+        ports:
+        - containerPort: 3000
