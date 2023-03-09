@@ -14,6 +14,8 @@ RUN yarn install
 # Copy app source
 COPY . .
 
+RUN yarn build
+
 EXPOSE 3000
 
-CMD [ "npm", "start" ]
+CMD [ "yarn", "start" ]
