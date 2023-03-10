@@ -1,6 +1,6 @@
 FROM node:16
 
-WORKDIR /usr/src/app
+WORKDIR /usr/src/app/admin
 
 # Copy root package.json and lockfile
 COPY package.json ./
