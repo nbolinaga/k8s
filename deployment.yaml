@@ -19,3 +19,8 @@ spec:
         image: registry.digitalocean.com/k8s-demo/admin:latest
         ports:
         - containerPort: 3000
+
+      - name: client-nextjs-deploy
+        image: registry.digitalocean.com/k8s-demo/client:latest
+        ports:
+        - containerPort: 3002
