@@ -39,6 +39,7 @@
   },
   "packageManager": "npm@8.1.2",
   "dependencies": {
+    "@kubernetes/client-node": "^0.18.1",
     "stripe": "^11.6.0"
   }
 }
