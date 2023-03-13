@@ -15,10 +15,14 @@ spec:
         app: nextjs-deployment
     spec:
       containers:
-      - name: nextjs-deploy
-        image: registry.digitalocean.com/k8s-demo/nextjs:latest
+      - name: admin-deploy
+        image: registry.digitalocean.com/k8s-demo-registry/admin
         ports:
         - containerPort: 3000
-        - containerPort: 3001
         imagePullPolicy: Always
 
+      - name: client-deploy
+        image: registry.digitalocean.com/k8s-demo-registry/client
+        ports:
+        - containerPort: 3002
+        imagePullPolicy: Always
