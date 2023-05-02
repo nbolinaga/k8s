@@ -17,6 +17,8 @@ jobs:
       uses: digitalocean/action-doctl@v2
       with:
         token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+    - name: auth
+      run: doctl auth init --access-token ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
     - name: create network
       run: docker network create "app_network"
     - name: Build images
@@ -25,6 +27,8 @@ jobs:
       run: docker tag client registry.digitalocean.com/showcase-registry/client:v1.0.0
     - name: Tag admin
       run: docker tag admin registry.digitalocean.com/showcase-registry/admin:v1.0.0
+    - name: Doctl login
+      run: doctl registry login
     - name: Push client
       run: docker push registry.digitalocean.com/showcase-registry/client:v1.0.0
     - name: Push admin
