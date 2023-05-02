@@ -22,7 +22,7 @@ jobs:
     - name: Giver permission
       run: chmod +x ./release-scripts/cnb-docker-images.sh
     - name: Build and push container image
-      run: ./release-scripts/cnb-docker-images.sh  
+      run: bash ${GITHUB_WORKSPACE}/release-scripts/cnb-docker-images.sh  
     - name: Save DigitalOcean kubeconfig with short-lived credentials
       run: doctl kubernetes cluster kubeconfig save --expiry-seconds 600 ${{ secrets.CLUSTER_NAME }}
     - name: Deploy to DigitalOcean Kubernetes
