@@ -5,8 +5,8 @@ SCRIPTDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 log() { echo "$1" >&2; }
 
-TAG="${TAG:?TAG env variable must be specified}"
-REPO_PREFIX="${REPO_PREFIX:?REPO_PREFIX env variable must be specified}"
+TAG="v1.0.0"
+REPO_PREFIX="registry.digitalocean.com/showcase-registry"
 
 while IFS= read -d $'\0' -r dir; do
     # build image
