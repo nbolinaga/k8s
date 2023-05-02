@@ -21,8 +21,10 @@ jobs:
       run: doctl registry login --expiry-seconds 1200
     - name: Giver permission
       run: chmod +x ./release-scripts/cnb-docker-images.sh
-           export REPO_PREFIX="registry.digitalocean.com/microservices-demo"
-           export TAG="v1.0.0"
+    - name: Add Repo prefix
+      run: export REPO_PREFIX="registry.digitalocean.com/showcase-registry"
+    - name: Add Repo tag
+      run: export TAG="v1.0.0"
     - name: Build and push container image
       run: ./release-scripts/cnb-docker-images.sh  
     - name: Save DigitalOcean kubeconfig with short-lived credentials
