@@ -6,10 +6,7 @@ on:
     paths:
       - 'apps/**'
       - 'Dockerfile'
-      - '.github/workflows/**'
-env:
- MY_ENV: dev
- 
+      - '.github/workflows/**' 
 jobs:
  build:
    runs-on: ubuntu-latest
