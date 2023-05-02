@@ -22,9 +22,9 @@ jobs:
     - name: Build images
       run: docker compose up -d
     - name: Tag client
-      run: docker tag client registry.digitalocean.com/showcase-registry/client:v.1.0.0
+      run: docker tag client registry.digitalocean.com/showcase-registry/client:v1.0.0
     - name: Tag admin
-      run: docker tag admin registry.digitalocean.com/showcase-registry/admin:v.1.0.0
+      run: docker tag admin registry.digitalocean.com/showcase-registry/admin:v1.0.0
     - name: Push client
       run: docker push registry.digitalocean.com/showcase-registry/client:v1.0.0
     - name: Push admin
