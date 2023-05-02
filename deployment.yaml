@@ -16,13 +16,13 @@ spec:
     spec:
       containers:
       - name: admin-deploy
-        image: registry.digitalocean.com/k8s-demo-registry/admin
+        image: registry.digitalocean.com/showcase-registry/admin
         ports:
         - containerPort: 3000
         imagePullPolicy: Always
 
       - name: client-deploy
-        image: registry.digitalocean.com/k8s-demo-registry/client
+        image: registry.digitalocean.com/showcase-registry/client
         ports:
         - containerPort: 3002
         imagePullPolicy: Always
