@@ -20,7 +20,7 @@ jobs:
     - name: create network
       run: docker network create "app_network"
     - name: Build images
-      run: docker compose up
+      run: docker compose up -d
     - name: Tag client
       run: docker tag client registry.digitalocean.com/showcase-registry/client:v.1.0.0
     - name: Tag admin
