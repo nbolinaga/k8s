@@ -13,6 +13,8 @@ jobs:
    steps:
     - name: Checkout master
       uses: actions/checkout@main
+    - name: Print secret value
+      run: echo ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
     - name: Install doctl
       uses: digitalocean/action-doctl@v2
       with:
