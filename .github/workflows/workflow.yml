@@ -17,19 +17,17 @@ jobs:
       uses: digitalocean/action-doctl@v2
       with:
         token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
-    - name: Update
-      run: sudo apt-get update
-    - name: Install CLI
-      run: sudo add-apt-repository ppa:cncf-buildpacks/pack-cli 
-    - name: update CLI
-      run: sudo apt-get install pack-cli
-    - name: Log in to DigitalOcean Container Registry with short-lived credentials
-      run: doctl registry login --expiry-seconds 1200
-    - name: Giver permission
-      run: chmod +x ./release-scripts/cnb-docker-images.sh
-    - name: Build and push container image
-      run: bash ${GITHUB_WORKSPACE}/release-scripts/cnb-docker-images.sh  
-#     - name: Save DigitalOcean kubeconfig with short-lived credentials
-#       run: doctl kubernetes cluster kubeconfig save --expiry-seconds 600 ${{ secrets.CLUSTER_NAME }}
+    - name: Build images
+      run: docker compose up
+    - name: Tag client
+      run: docker tag client registry.digitalocean.com/showcase-registry/client:v.1.0.0
+    - name: Tag admin
+      run: docker tag admin registry.digitalocean.com/showcase-registry/admin:v.1.0.0
+    - name: Push client
+      run: docker push registry.digitalocean.com/showcase-registry/client:v1.0.0
+    - name: Push admin
+      run: docker push registry.digitalocean.com/showcase-registry/admin:v1.0.0
+    - name: Deploy Service
+      run: kubectl apply -f $GITHUB_WORKSPACE/config/service.yml
     - name: Deploy to DigitalOcean Kubernetes
       run: kubectl apply -f $GITHUB_WORKSPACE/config/deployment.yml
