@@ -29,12 +29,8 @@ jobs:
       run: docker tag admin registry.digitalocean.com/showcase-registry/admin:v1.0.0
     - name: Doctl login
       run: doctl registry login
-    - name: Push client
-      run: docker push registry.digitalocean.com/showcase-registry/client:v1.0.0
-    - name: Push admin
-      run: docker push registry.digitalocean.com/showcase-registry/admin:v1.0.0
     - name: Save DigitalOcean kubeconfig with short-lived credentials
       run: doctl kubernetes cluster kubeconfig save --expiry-seconds 600 k8s-dev
     - name: Deploy to DigitalOcean Kubernetes
-      run: kubectl apply -f ../deployment.yml
+      run: kubectl apply -f $GITHUB_WORKSPACE/../deployment.yml
 
