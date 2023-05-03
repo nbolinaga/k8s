@@ -33,7 +33,7 @@ jobs:
       run: docker push registry.digitalocean.com/showcase-registry/client:v1.0.0
     - name: Push admin
       run: docker push registry.digitalocean.com/showcase-registry/admin:v1.0.0
-#     - name: Deploy Service
-#       run: kubectl apply -f $GITHUB_WORKSPACE/config/service.yml
-#     - name: Deploy to DigitalOcean Kubernetes
-#       run: kubectl apply -f $GITHUB_WORKSPACE/config/deployment.yml
+    - name: Delete prev deploy
+      run: kubectl delete deployment nextjs-deployment
+    - name: Deploy to DigitalOcean Kubernetes
+      run: kubectl apply -f $GITHUB_WORKSPACE/config/deployment.yml
