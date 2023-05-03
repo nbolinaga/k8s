@@ -21,8 +21,6 @@ jobs:
       run: doctl auth init --access-token ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
     - name: create network
       run: docker network create "app_network"
-    - name: Deploy to DigitalOcean Kubernetes
-      run: kubectl apply -f $GITHUB_WORKSPACE/deployment.yml
     - name: Build images
       run: docker compose up -d
     - name: Tag client
@@ -37,4 +35,6 @@ jobs:
       run: docker push registry.digitalocean.com/showcase-registry/admin:v1.0.0
     - name: Save DigitalOcean kubeconfig with short-lived credentials
       run: doctl kubernetes cluster kubeconfig save --expiry-seconds 600 k8s-dev
+    - name: Deploy to DigitalOcean Kubernetes
+      run: kubectl apply -f $GITHUB_WORKSPACE/deployment.yml
 
