@@ -20,8 +20,7 @@ const MyPage: NextPage<Props> = ({ podName }) => {
 
   return (
     <div>
-      <p> CHANGE TEST </p>
-      <h1>CLIENT PAGE</h1>
+      <h1>CLIENT PAGE CHANGED</h1>
       <h2>Hostname</h2>
       <p>{hostname}</p>
       <h2>Connected to pod:</h2>
